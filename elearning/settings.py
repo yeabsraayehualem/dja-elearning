@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sg4*c$a^nsz0k-@#+s4x+i%&j984eyujs8)6tez)5-q&k0x(e$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
+    'home',
+    'student',
+    'teacher',
+    'course',
+    'staff',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +73,7 @@ TEMPLATES = [
         },
     },
 ]
-
+AUTH_USER_MODEL='user.User'
 WSGI_APPLICATION = 'elearning.wsgi.application'
 
 
