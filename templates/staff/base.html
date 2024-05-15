@@ -1,0 +1,349 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>E-learning | Instructor Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <!-- page specific css -->
+  <link href="{% static 'plugins/apexcharts/css/apexcharts.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <!-- page specific css -->
+</head>
+
+<body class="light-mode">
+
+  <div class="top-navbar d-flex justify-content-between align-items-center py-3 align-items-center gap-3 d-none d-md-block">
+    <div class="ps-4 pe-4 d-flex align-items-center">
+    <a class="navbar-brand" href="#"><img src="{% static 'img/logo_svg.svg' %}" class="img-fluid" alt=""></a>
+    <div class="ms-auto">      
+      <ul class="mb-0 d-flex align-items-center topbar-right ps-3">
+        <div class="search w-100 topbar-left me-3">
+          <i class="bx bx-search fs-18"></i>
+          <input type="text" class="text-reg-14" placeholder="Search" />
+        </div>
+        <li class="mx-2">
+          <a href="javascript:void(0);" title="Switch to Dark Mode" onclick="toggleDarkMode()">
+            <svg class="dark-mode-i" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19.9001 2.30719C19.7392 1.8976 19.1616 1.8976 19.0007 2.30719L18.5703 3.40247C18.5212 3.52752 18.4226 3.62651 18.298 3.67583L17.2067 4.1078C16.7986 4.26934 16.7986 4.849 17.2067 5.01054L18.298 5.44252C18.4226 5.49184 18.5212 5.59082 18.5703 5.71587L19.0007 6.81115C19.1616 7.22074 19.7392 7.22074 19.9001 6.81116L20.3305 5.71587C20.3796 5.59082 20.4782 5.49184 20.6028 5.44252L21.6941 5.01054C22.1022 4.849 22.1022 4.26934 21.6941 4.1078L20.6028 3.67583C20.4782 3.62651 20.3796 3.52752 20.3305 3.40247L19.9001 2.30719Z" fill="#ffffff"></path>
+              <path d="M16.0328 8.12967C15.8718 7.72009 15.2943 7.72009 15.1333 8.12967L14.9764 8.52902C14.9273 8.65407 14.8287 8.75305 14.7041 8.80237L14.3062 8.95987C13.8981 9.12141 13.8981 9.70107 14.3062 9.86261L14.7041 10.0201C14.8287 10.0694 14.9273 10.1684 14.9764 10.2935L15.1333 10.6928C15.2943 11.1024 15.8718 11.1024 16.0328 10.6928L16.1897 10.2935C16.2388 10.1684 16.3374 10.0694 16.462 10.0201L16.8599 9.86261C17.268 9.70107 17.268 9.12141 16.8599 8.95987L16.462 8.80237C16.3374 8.75305 16.2388 8.65407 16.1897 8.52902L16.0328 8.12967Z" fill="#ffffff" width:=""></path>
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#fff"></path>
+            </svg>
+            <svg class="light-mode-i" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+              fill="none">
+              <g clip-path="url(#clip0_2749_69681)">
+                <path
+                  d="M10 13.5714C11.9724 13.5714 13.5714 11.9725 13.5714 10C13.5714 8.02757 11.9724 6.42859 10 6.42859C8.02756 6.42859 6.42857 8.02757 6.42857 10C6.42857 11.9725 8.02756 13.5714 10 13.5714Z"
+                  stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10 0.714294V3.57144" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M3.42856 3.42859L5.45713 5.45716" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M0.714279 10H3.57142" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M3.42856 16.5714L5.45713 14.5428" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M10 19.2857V16.4286" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M16.5714 16.5714L14.5428 14.5428" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M19.2857 10H16.4286" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M16.5714 3.42859L14.5428 5.45716" stroke="#0B0925" stroke-width="1.42857" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2749_69681">
+                  <rect width="20" height="20" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </a>
+        </li>
+        <li class="mx-2">
+          <div class="dropdown">
+            <button class="btn btn-secondary bg-white rounded-circle p-0 border-0 dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="javascript:void(0);" title="Notifications"
+                class="position-relative notify rounded-circle d-flex justify-content-center align-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 13.586V10C19 6.783 16.815 4.073 13.855 3.258C13.562 2.52 12.846 2 12 2C11.154 2 10.438 2.52 10.145 3.258C7.185 4.074 5 6.783 5 10V13.586L3.293 15.293C3.19996 15.3857 3.12617 15.4959 3.07589 15.6172C3.0256 15.7386 2.99981 15.8687 3 16V18C3 18.2652 3.10536 18.5196 3.29289 18.7071C3.48043 18.8946 3.73478 19 4 19H20C20.2652 19 20.5196 18.8946 20.7071 18.7071C20.8946 18.5196 21 18.2652 21 18V16C21.0002 15.8687 20.9744 15.7386 20.9241 15.6172C20.8738 15.4959 20.8 15.3857 20.707 15.293L19 13.586ZM19 17H5V16.414L6.707 14.707C6.80004 14.6143 6.87383 14.5041 6.92412 14.3828C6.9744 14.2614 7.00019 14.1313 7 14V10C7 7.243 9.243 5 12 5C14.757 5 17 7.243 17 10V14C17 14.266 17.105 14.52 17.293 14.707L19 16.414V17ZM12 22C12.6193 22.0008 13.2235 21.8086 13.7285 21.4502C14.2335 21.0917 14.6143 20.5849 14.818 20H9.182C9.38566 20.5849 9.76648 21.0917 10.2715 21.4502C10.7765 21.8086 11.3807 22.0008 12 22Z" fill="#6B2D78"/>
+                  <circle cx="19.5" cy="6.5" r="4.5" fill="#FA3F3F"/>
+                  </svg>                  
+                <!-- <span class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger p-1"> -->
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </a>
+            </button>
+            <ul class="dropdown-menu ac-card py-0" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <div class="d-flex ac-card-heading justify-content-between">
+                  <p class="mb-0">Notifications</p>
+                  <a href="#" class="mb-0 text-grey fw-400 fs-14">See all</a>
+                </div>
+                <hr class="my-0 text-grey">
+                </a>
+              </li>
+              <li><a class="dropdown-item pt-3" href="#">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                      <img src="{% static 'img/patient profile.png' %}" class="h-50 me-3" alt="">
+                      <div class="ac-dropdown-body">
+                        <p class="secondary-text mb-0 fs-14 fw-600">Your order is placed.</p>
+                        <p class="fs-14 secondary-text mb-1 text-truncate">
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
+                        <p class="text-grey mb-2 fs-14">3 mins ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <hr class="my-0 text-grey">
+              <li><a class="dropdown-item pt-3" href="#">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                      <img src="{% static 'img/patient profile.png' %}" class="h-50 me-3" alt="">
+                      <div class="w-fit ac-dropdown-body">
+                        <p class="secondary-text mb-0 fs-14 fw-600">Revised Order</p>
+                        <p class="fs-14 secondary-text mb-1">
+                          Lorem Ipsum is simply dummy text.
+                        </p>
+                        <p class="text-grey mb-2 fs-14">1 hr ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <hr class="my-0 text-grey">
+              <li><a class="dropdown-item pt-3" href="#">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                      <img src="{% static 'img/patient profile.png' %}" class="h-50 me-3" alt="">
+                      <div class="w-fit ac-dropdown-body">
+                        <p class="secondary-text mb-0 fs-14 fw-600">Your order is placed.</p>
+                        <p class="fs-14 secondary-text mb-1">
+                          Lorem Ipsum is simply dummy text.
+                        </p>
+                        <p class="text-grey mb-2 fs-14">3 mins ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mx-2">
+          <div class="dropdown">
+            <button class="btn btn-secondary p-0 dropdown-toggle bg-transparent d-flex border-0" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  
+              <div class="pe-2">
+                <img src="{% static 'img/Avatar.png' %}" alt="profile" width="40" height="40" class="rounded-circle" />
+              </div>
+  
+              <div class="profile-dropdown d-flex align-items-center gap-3">
+                <div class="d-flex flex-column">
+                  <p class="mb-0 fs-16 text-white fw-bold">Austin Robertson</p>
+                  <p class="mb-0 fs-12 text-white">Marketing Administrator</p>
+                </div>
+                <div class="">
+                  <i class="bx bxs-chevron-down text-white"></i>
+                </div>
+              </div>
+            </button>
+            <ul class="dropdown-menu ac-card ac-card-body text-center dropdownmenu-profile mt-2 py-3 px-3"
+              aria-labelledby="dropdownMenuButton1">
+              <li class="mb-2">
+                <a class="dropdown-item primary-text d-flex me-3 py-2" href="./pages/profile.html">
+                  <i class='bx bxs-user fs-20 me-2 mt-1'></i>
+                  <p class="mb-0 fw-normal">View Profile</p>
+                </a>
+              </li>
+              <!-- <hr class="my-2 text-grey"> -->
+              <li class="mb-2">
+                <a class="dropdown-item primary-text d-flex me-3 py-2" href="./pages/chatbox.html">
+                  <i class='bx bxs-message-rounded-dots fs-20 me-2 mt-1'></i>
+                  <p class="mb-0">Chats</p>
+                </a>
+              </li>
+              <!-- <hr class="my-2 text-grey"> -->
+              <li><a class="dropdown-item d-flex primary-text me-3 py-2"
+                  href="./pages/authentication_pages/forgetpassword.html">
+                  <i class='bx bx-reset fs-20 me-2 mt-1'></i>
+                  Recover Password</a></li>
+              <!-- <hr class="my-2 text-grey"> -->
+              <li class="mb-2">
+                <div class="px-3">
+                  <a href="./pages/authentication_pages/login.html"><button
+                      class="outline-primary-btn-lg primary-text w-100 mt-3">Log out</button></a>
+                </div>
+              </li>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-top navbar-expand-lg navbar-light ac-top-nav">
+    <div class="ps-4 pe-4">
+      <a class="navbar-brand d-sm-block d-lg-none" href="#"><img src="{% static 'img/logo_sm.png' %}" class="img-fluid w-25" alt=""></a>
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav navbar-nav-top mb-2 mb-lg-0 primary-text" data-dropdown-on-hover="data-dropdown-on-hover">
+          <li class="nav-item dropdown ms-0">
+            <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_317_13085)">
+                <path d="M14.2846 0.571289H1.71317C1.08199 0.571289 0.570312 1.08296 0.570312 1.71415V14.2856C0.570312 14.9168 1.08199 15.4284 1.71317 15.4284H14.2846C14.9158 15.4284 15.4275 14.9168 15.4275 14.2856V1.71415C15.4275 1.08296 14.9158 0.571289 14.2846 0.571289Z" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M0.570312 4H15.4275" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.14062 4V15.4286" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_317_13085">
+                <rect width="16" height="16" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+                <span class="px-2 fs-14"> Dashboard</span><i class="bx bxs-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="index.html">Instructor Dashboard</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="learner.html">Learner Dashboard</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown ms-0">
+            <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4.5C12 6.70823 10.2082 8.5 8 8.5C5.79177 8.5 4 6.70823 4 4.5C4 2.29177 5.79177 0.5 8 0.5C10.2082 0.5 12 2.29177 12 4.5ZM8 11C8.84791 11 9.65504 10.8192 10.385 10.5H12C13.9332 10.5 15.5 12.0668 15.5 14V14.5C15.5 15.052 15.052 15.5 14.5 15.5H1.5C0.948017 15.5 0.5 15.052 0.5 14.5V14C0.5 12.0668 2.06677 10.5 4 10.5H5.61536C6.34718 10.8189 7.15143 11 8 11Z" stroke="black"/>
+                </svg>
+                <span class="px-2 fs-14">Learner</span><i class="bx bxs-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/courses/mycourses.html">Browse Course</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/courses/coursedetails.html">View Course</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/Quiz(learner)/quiz.html">Take Quiz</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/Quiz(learner)/quizresult.html">Quiz Result</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/instructor.html">Instructor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown ms-0">
+            <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <svg width="26" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5053 0.623889L12.5054 0.62386C13.0425 0.458723 13.6235 0.458695 14.1612 0.623887L25.7835 4.19467C26.294 4.3516 26.294 4.9818 25.7836 5.13878C25.7836 5.13879 25.7836 5.1388 25.7835 5.13881L14.1608 8.70958C13.4416 8.93048 12.8261 8.80813 12.5049 8.7096C12.5048 8.70958 12.5048 8.70956 12.5047 8.70954L4.3562 6.20586L4.12524 6.1349L3.92613 6.27176C3.29138 6.70805 2.88769 7.40234 2.84791 8.18853L2.83289 8.48532L3.08641 8.64036C3.34324 8.79742 3.49977 9.05023 3.49977 9.33338C3.49977 9.59466 3.36421 9.83035 3.13307 9.99424L2.86212 10.1864L2.93418 10.5106L3.99792 15.2972C4.02104 15.4013 3.94191 15.5 3.83518 15.5H1.49728C1.3912 15.5 1.31179 15.4015 1.33496 15.2972L2.39871 10.5106L2.47076 10.1864L2.19982 9.99424C1.96867 9.83035 1.83312 9.59466 1.83312 9.33338C1.83312 9.04019 1.99865 8.77973 2.26551 8.62676L2.50629 8.48874L2.51652 8.2114C2.53932 7.59332 2.76881 7.02522 3.15059 6.55328L3.61586 5.97812L2.90869 5.76086L0.882456 5.13836L0.882421 5.13835C0.372526 4.98175 0.372526 4.35132 0.882421 4.19471L0.882459 4.1947L12.5053 0.623889ZM14.846 10.9401L14.8461 10.9401L20.3198 9.25829L20.8322 13.358C20.8225 13.5067 20.724 13.7193 20.3948 13.9787C20.0526 14.2484 19.5265 14.5131 18.8318 14.7447C17.4475 15.2061 15.5034 15.5 13.333 15.5C11.1627 15.5 9.21854 15.2061 7.83431 14.7447C7.13958 14.5131 6.61344 14.2484 6.27125 13.9787C5.9421 13.7193 5.84353 13.5067 5.8339 13.358L6.34622 9.25867L11.8194 10.94C11.8195 10.9401 11.8195 10.9401 11.8196 10.9401C12.4077 11.1209 13.5291 11.3445 14.846 10.9401Z" stroke="#6B2D78"/>
+                </svg>
+                
+                <span class="px-2 fs-14">Instructor</span><i class="bx bxs-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/course/addcourse.html">Add Course</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/course/editcourse.html">Edit Course</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/Forum/forum.html">Forum</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/Forum/forum-course.html">Forum Course</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown ms-0">
+            <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8.99998" cy="7.22222" r="2.66667" stroke="#6B2D78" stroke-linecap="round"/>
+                <circle cx="9" cy="9" r="8" stroke="#6B2D78"/>
+                <path d="M14.3334 14.9608C14.0188 14.0158 13.3256 13.1807 12.3613 12.5851C11.397 11.9895 10.2155 11.6667 9.00002 11.6667C7.78456 11.6667 6.60306 11.9895 5.63876 12.5851C4.67447 13.1807 3.98127 14.0158 3.66669 14.9608" stroke="#6B2D78" stroke-linecap="round"/>
+                </svg>
+                
+                
+                <span class="px-2 fs-14">Account</span><i class="bx bxs-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/Account/editaccount.html">Edit Account</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/basic information/basicinformation.html">Basic Information</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/privacypolicy/privacypolicy.html">Profile & Privacy</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/subscription/subscription.html">Subscription</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/subscription/upgradeaccount.html">Upgrade Account</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/subscription/payemtmethod.html">Payment Method</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/ui_elements/invoice.html">Invoice</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-item py-2 fs-14" href="./pages/ui_elements/editinvoice.html">Edit Invoice</a>
+              </li>
+            </ul>
+          </li>
+         
+          
+          
+          
+          
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  
+
+{% block content %}
+    
+{% endblock  %}
+
+
+  <!-- jquery latest cdn -->
+  <script src="{% static 'js/code.jquery.com_jquery-3.7.0.min.js' %}"></script>
+  <script
+    src="https://cdn.anychart.com/releases/8.11.1/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- page specific js -->
+  <!-- <script type="text/Javascript" src="plugins/apexcharts/js/apexcharts.min.js"></script> -->
+  <script type="text/Javascript" src="{% static 'plugins/apexcharts/js/apexcharts.min.js' %}"></script>
+  <script type="text/Javascript" src="{% static 'plugins/chartjs/js/chart.min.js' %}"></script>
+  <!-- page specific js -->
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/charts.js' %}"></script>
+
+
+</body>
+
+</html>

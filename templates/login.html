@@ -21,7 +21,8 @@
           
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.5s ">
                 <center>
-                    <form class="shadow p-4" style="max-width: 550px;">
+                    <form class="shadow p-4" method="post" action="" style="max-width: 550px;">
+                        {% csrf_token %}
                         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                             <h1 class="mb-5 bg-white text-center px-3">Login</h1>
             
@@ -29,13 +30,13 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
                                     <label for="email">Email Address</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                     <label for="password">Password</label>
                                 </div>
                             </div>

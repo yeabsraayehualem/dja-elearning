@@ -23,3 +23,11 @@ class Course(models.Model):
     instructor = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)
     def __str__(self):
         return f"{self.title}"
+    
+    
+class Enroled(models.Model):
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    date_enroled= models.DateTimeField(auto_now_add=True)
+    course= models.ForeignKey(Course, on_delete= models.PROTECT)
+    def __str__(self):
+        return f"{self.user}- {self.course}"

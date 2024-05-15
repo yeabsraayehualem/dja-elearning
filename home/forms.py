@@ -24,3 +24,28 @@ class UserForm(forms.ModelForm):
         if password != confirm_password:
             raise ValidationError("Passwords do not match")
         return cleaned_data
+    
+
+
+
+
+class AuthenticationForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            # field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder']= field_name
+    email = forms.EmailField(label='Email')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        if email and password:
+            user = authenticate(email=email, password=password)
+            if user is None or not user.is_active:
+                raise forms.ValidationError("Invalid email or password.")
+
+        return cleaned_data
