@@ -146,13 +146,13 @@
               id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   
               <div class="pe-2">
-                <img src="{% static 'img/Avatar.png' %}" alt="profile" width="40" height="40" class="rounded-circle" />
+                <img src="{{user.profile_pic.url}}" alt="profile" width="40" height="40" class="rounded-circle" />
               </div>
   
               <div class="profile-dropdown d-flex align-items-center gap-3">
                 <div class="d-flex flex-column">
-                  <p class="mb-0 fs-16 text-white fw-bold">Austin Robertson</p>
-                  <p class="mb-0 fs-12 text-white">Marketing Administrator</p>
+                  <p class="mb-0 fs-16 text-white fw-bold">{{user}}</p>
+                  <p class="mb-0 fs-12 text-white">{{user.role}}</p>
                 </div>
                 <div class="">
                   <i class="bx bxs-chevron-down text-white"></i>
@@ -182,7 +182,7 @@
               <!-- <hr class="my-2 text-grey"> -->
               <li class="mb-2">
                 <div class="px-3">
-                  <a href="./pages/authentication_pages/login.html"><button
+                  <a href="{% url 'home:logout' %}"><button
                       class="outline-primary-btn-lg primary-text w-100 mt-3">Log out</button></a>
                 </div>
               </li>
@@ -217,23 +217,25 @@
                 </svg>
                 <span class="px-2 fs-14"> Dashboard</span><i class="bx bxs-chevron-down"></i>
             </a>
-            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+            {% comment %} <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="index.html">Instructor Dashboard</a>
               </li>
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="learner.html">Learner Dashboard</a>
               </li>
-            </ul>
+            </ul> {% endcomment %}
           </li>
           <li class="nav-item dropdown ms-0">
             <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 4.5C12 6.70823 10.2082 8.5 8 8.5C5.79177 8.5 4 6.70823 4 4.5C4 2.29177 5.79177 0.5 8 0.5C10.2082 0.5 12 2.29177 12 4.5ZM8 11C8.84791 11 9.65504 10.8192 10.385 10.5H12C13.9332 10.5 15.5 12.0668 15.5 14V14.5C15.5 15.052 15.052 15.5 14.5 15.5H1.5C0.948017 15.5 0.5 15.052 0.5 14.5V14C0.5 12.0668 2.06677 10.5 4 10.5H5.61536C6.34718 10.8189 7.15143 11 8 11Z" stroke="black"/>
                 </svg>
-                <span class="px-2 fs-14">Learner</span><i class="bx bxs-chevron-down"></i>
+                <span class="px-2 fs-14">Manage Users</span><i class="bx bxs-chevron-down"></i>
+
+                {% comment %} <span class="px-2 fs-14">Learner</span><i class="bx bxs-chevron-down"></i> {% endcomment %}
             </a>
-            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+            {% comment %} <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="./pages/courses/mycourses.html">Browse Course</a>
               </li>
@@ -249,17 +251,18 @@
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="./pages/instructor.html">Instructor</a>
               </li>
-            </ul>
+            </ul> {% endcomment %}
           </li>
           <li class="nav-item dropdown ms-0">
             <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
               <svg width="26" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.5053 0.623889L12.5054 0.62386C13.0425 0.458723 13.6235 0.458695 14.1612 0.623887L25.7835 4.19467C26.294 4.3516 26.294 4.9818 25.7836 5.13878C25.7836 5.13879 25.7836 5.1388 25.7835 5.13881L14.1608 8.70958C13.4416 8.93048 12.8261 8.80813 12.5049 8.7096C12.5048 8.70958 12.5048 8.70956 12.5047 8.70954L4.3562 6.20586L4.12524 6.1349L3.92613 6.27176C3.29138 6.70805 2.88769 7.40234 2.84791 8.18853L2.83289 8.48532L3.08641 8.64036C3.34324 8.79742 3.49977 9.05023 3.49977 9.33338C3.49977 9.59466 3.36421 9.83035 3.13307 9.99424L2.86212 10.1864L2.93418 10.5106L3.99792 15.2972C4.02104 15.4013 3.94191 15.5 3.83518 15.5H1.49728C1.3912 15.5 1.31179 15.4015 1.33496 15.2972L2.39871 10.5106L2.47076 10.1864L2.19982 9.99424C1.96867 9.83035 1.83312 9.59466 1.83312 9.33338C1.83312 9.04019 1.99865 8.77973 2.26551 8.62676L2.50629 8.48874L2.51652 8.2114C2.53932 7.59332 2.76881 7.02522 3.15059 6.55328L3.61586 5.97812L2.90869 5.76086L0.882456 5.13836L0.882421 5.13835C0.372526 4.98175 0.372526 4.35132 0.882421 4.19471L0.882459 4.1947L12.5053 0.623889ZM14.846 10.9401L14.8461 10.9401L20.3198 9.25829L20.8322 13.358C20.8225 13.5067 20.724 13.7193 20.3948 13.9787C20.0526 14.2484 19.5265 14.5131 18.8318 14.7447C17.4475 15.2061 15.5034 15.5 13.333 15.5C11.1627 15.5 9.21854 15.2061 7.83431 14.7447C7.13958 14.5131 6.61344 14.2484 6.27125 13.9787C5.9421 13.7193 5.84353 13.5067 5.8339 13.358L6.34622 9.25867L11.8194 10.94C11.8195 10.9401 11.8195 10.9401 11.8196 10.9401C12.4077 11.1209 13.5291 11.3445 14.846 10.9401Z" stroke="#6B2D78"/>
                 </svg>
-                
-                <span class="px-2 fs-14">Instructor</span><i class="bx bxs-chevron-down"></i>
+                <span class="px-2 fs-14">Manage Course</span><i class="bx bxs-chevron-down"></i>
+
+                {% comment %} <span class="px-2 fs-14">Instructor</span><i class="bx bxs-chevron-down"></i> {% endcomment %}
             </a>
-            <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
+            {% comment %} <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="./pages/course/addcourse.html">Add Course</a>
               </li>
@@ -272,7 +275,7 @@
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="./pages/Forum/forum-course.html">Forum Course</a>
               </li>
-            </ul>
+            </ul> {% endcomment %}
           </li>
           <li class="nav-item dropdown ms-0">
             <a class="nav-link dropdown-toggle d-flex align-items-center ms-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
@@ -287,7 +290,7 @@
             </a>
             <ul class="dropdown-menu navbar-dropdown-caret" aria-labelledby="navbarDropdown">
               <li class="dropdown">
-                <a class="dropdown-item py-2 fs-14" href="./pages/Account/editaccount.html">Edit Account</a>
+                <a class="dropdown-item py-2 fs-14" href="{% url 'edit_profile' %}">Edit Account</a>
               </li>
               <li class="dropdown">
                 <a class="dropdown-item py-2 fs-14" href="./pages/basic information/basicinformation.html">Basic Information</a>

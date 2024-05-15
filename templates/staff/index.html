@@ -20,7 +20,7 @@
                   </div>
                   <div class="flex-grow-1 ms-3 primary-text">
                     <p class="mb-2 fs-16">Revenue</p>
-                    <h5 class="mb-2 text-prime-color">$467.34</h5>
+                    <h5 class="mb-2 text-prime-color">${{total}}</h5>
                     <p class="mb-0 fs-14 text-dark">Earning this month</p>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
                   </div>
                   <div class="flex-grow-1 ms-3">
                     <p class="mb-2 fs-16">Courses Enrollments</p>
-                    <h5 class="mb-2 text-prime-color">2000</h5>
+                    <h5 class="mb-2 text-prime-color">{{entolements|length}}</h5>
                     <p class="mb-2 fs-14 text-dark">New this month</p>
                   </div>
                 </div>
@@ -122,105 +122,25 @@
                 <th class="fs-14 border-0 secondary-text">Duration</th>
               </tr>
             </thead>
-              <tr>
+            
                 <tbody class="border-0">
-                <td class="fs-14 border-0">
+                  
+                  {% for e in entolements %}
+                    <tr>    <td class="fs-14 border-0">
                   <div class="d-flex align-items-center">
                     <div>
-                      <img src="./assets/img/vuejs.png" class="img-fluid" alt="" style="max-width: 60px;">
+                      <img src="{{e.course.image.url}}" class="img-fluid" alt="" style="max-width: 60px;">
                     </div>
                     <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">Vue js</span>
+                      <span class="fs-14 fw-bold text-prime-color">{{e.course}}</span>
                     </div>
                   </div>
                 </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
+                <td class="fs-14 border-0 text-center secondary-text">{{e.course.lessons}}</td>
+                <td class="fs-14 border-0 text-center px-0 secondary-text">{{e.course.duration}}</td>
               </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/angular.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">Angular Developers</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/github.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">Introduction of github Social coding</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/react.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">React</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/vuejs.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">Vue js</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/angular.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">Angular Developers</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/react.png" class="img-fluid" alt="" style="max-width: 60px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-bold text-prime-color">React</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center px-0 secondary-text">7hr 20min</td>
-              </tr>
+                  {% endfor %}
+              
               </tbody>
             </table>
             </div>
@@ -256,14 +176,17 @@
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     </div>
                   </th>               
-                    <th class="fs-14 secondary-text">Courses</th>
-                    <th class="fs-14 secondary-text">Document</th>
+                    <th class="fs-14 secondary-text">Course</th>
+                    <th class="fs-14 secondary-text">Ref.No.</th>
                     <th class="fs-14 secondary-text">Amount</th>
                     <th class="fs-14 secondary-text">Date</th>
-                  <th class="width-100 text-center secondary-text">Action</th>
+              
                 </tr>
               </thead>
               <tbody class="bg-transparent">
+                
+                {% for e in entolements %}
+                    
                 <tr>
                   <td class="fw-bold">
                     <div>
@@ -276,120 +199,18 @@
                         <img src="./assets/img/transaction1.png" class="img-fluid" alt="" style="max-width: 40px;">
                       </div>
                       <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color">Figma: Create Design System</span>
+                        <span class="fs-14 fw-bold text-prime-color">{{e.course}}</span>
                       </div>
                     </div>
                   </td>                
-                  <td class="fs-14 secondary-text">Invoice #8796</td>
-                  <td class="fs-14 secondary-text">$98 USD</td>
-                  <td class="fs-14 secondary-text">Jan 6, 2022</td>
-                  <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
+                  <td class="fs-14 secondary-text">{{e.ref_no}}</td>
+                  <td class="fs-14 secondary-text">${{e.course.price}} USD</td>
+                  <td class="fs-14 secondary-text">{{e.payment_date}}</td>
+               
                 </tr>
-                <tr>
-                  <td class="fw-bold">
-                    <div>
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    </div>
-                  </td>
-                  <td class="fs-14">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img src="./assets/img/transaction2.png" class="img-fluid" alt="" style="max-width: 40px;">
-                      </div>
-                      <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color">Advance Design Tools </span>
-                      </div>
-                    </div>
-                  </td>                
-                    <td class="fs-14 secondary-text">Invoice #8796</td>
-                    <td class="fs-14 secondary-text">$98 USD</td>
-                    <td class="fs-14 secondary-text">Jan 6, 2022</td>
-                    <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
-                </tr>
-                <tr>
-                  <td class="fw-bold">
-                    <div>
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    </div>
-                  </td>
-                  <td class="fs-14 border-0">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img src="./assets/img/transaction3.png" class="img-fluid" alt="" style="max-width: 40px;">
-                      </div>
-                      <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color">Basic of Digital marketing</span>
-                      </div>
-                    </div>
-                  </td>                
-                  <td class="fs-14 secondary-text">Invoice #8796</td>
-                  <td class="fs-14 secondary-text">$98 USD</td>
-                  <td class="fs-14 secondary-text">Jan 6, 2022</td>
-                  <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
-                </tr>
-                <tr>
-                  <td class="fw-bold">
-                    <div>
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    </div>
-                  </td>
-                  <td class="fs-14 border-0">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img src="./assets/img/transaction4.png" class="img-fluid" alt="" style="max-width: 40px;">
-                      </div>
-                      <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color">Basic of Html</span>
-                      </div>
-                    </div>
-                  </td>                
-                  <td class="fs-14 secondary-text">Invoice #8796</td>
-                  <td class="fs-14 secondary-text">$98 USD</td>
-                  <td class="fs-14 secondary-text">Jan 6, 2022</td>
-                  <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
-                </tr>
-                <tr>
-                  <td class="fw-bold">
-                    <div>
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    </div>
-                  </td>
-                  <td class="fs-14 border-0">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img src="./assets/img/transaction5.png" class="img-fluid" alt="" style="max-width: 40px;">
-                      </div>
-                      <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color">Dashboard interaction.framerx</span>
-                      </div>
-                    </div>
-                  </td>                
-                  <td class="fs-14 secondary-text">Invoice #8796</td>
-                  <td class="fs-14 secondary-text">$98 USD</td>
-                  <td class="fs-14 secondary-text">Jan 6, 2022</td>
-                  <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
-                </tr>
-                <tr>
-                  <td class="fw-bold">
-                    <div>
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    </div>
-                  </td>
-                  <td class="fs-14 border-0">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img src="./assets/img/transaction6.png" class="img-fluid" alt="" style="max-width: 40px;">
-                      </div>
-                      <div class="px-2">
-                        <span class="fs-14 fw-bold text-prime-color text-truncate">Android Development</span>
-                      </div>
-                    </div>
-                  </td>                
-                  <td class="fs-14 text-truncate secondary-text">Invoice #8796</td>
-                  <td class="fs-14 text-truncate secondary-text">$98 USD</td>
-                  <td class="fs-14 text-truncate secondary-text">Jan 6, 2022</td>
-                  <td class="fs-14 text-center secondary-text"><i class='bx bx-dots-vertical-rounded'></i></td>
-                </tr>
+                {% endfor %}
+                
+                
               </tbody>
             </table>
           </div>
@@ -398,18 +219,20 @@
         <div class="col-xl-6 col-xxl-4">
           <div class="card ac-card h-100">
             <div class="card-header ac-card-header d-flex justify-content-between align-items-center table-title">
-              <h6 class="primary-text">Best Selling Courses</h6> 
+              <h6 class="primary-text">Users List</h6> 
               <button type="button" class="btn rounded-2 btn-primary primary-btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal"> View All</button>             
             </div>
             <div class="ac-table ac-simple-datatable table-responsive datatable">
             <table class="ac-simple-tbl border-0 mt-2" id="simple-datatable">
               <tbody class="border-0">
               <tr>
-                <th class="fs-14 border-0 secondary-text">Courses Name</th>
-                <th class="fs-14 border-0 secondary-text">Sales</th>
-                <th class="fs-14 border-0 secondary-text">Amount</th>
-                <th class="fs-14 border-0 secondary-text">Date</th>
+                <th class="fs-14 border-0 secondary-text">Full Name</th>
+                <th class="fs-14 border-0 secondary-text">Email</th>
+                <th class="fs-14 border-0 secondary-text">Role</th>
+                <th class="fs-14 border-0 secondary-text">Date Joined</th>
               </tr>
+              
+              {% for u in users %}
               <tr>
                 <td class="fs-14 border-0">
                   <div class="d-flex align-items-center">
@@ -417,59 +240,17 @@
                       <img src="./assets/img/bestsell1.png" class="img-fluid" alt="" style="max-width:100px; max-height: 80px;">
                     </div>
                     <div class="px-2">
-                      <span class="fs-14 fw-500 text-prime-color">Html For beginners</span>
+                      <span class="fs-14 fw-500 text-prime-color">{{u}}</span>
                     </div>
                   </div>
                 </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center secondary-text">$3,145.23</td>
-                <td class="fs-14 border-0 text-center secondary-text">19/06/2023</td>
+                <td class="fs-14 border-0 text-center secondary-text">{{u.email}}</td>
+                <td class="fs-14 border-0 text-center secondary-text">{{u.role}}</td>
+                <td class="fs-14 border-0 text-center secondary-text">{{u.date_joined}}</td>
               </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/bestsell2.png" class="img-fluid" alt="" style="max-width:100px; max-height: 80px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-500 text-prime-color">Information about the UI/UX Design Degree</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text ">36</td>
-                <td class="fs-14 border-0 text-center secondary-text">$3,145.23</td>
-                <td class="fs-14 border-0 text-center secondary-text">19/06/2023</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/bestsell3.png" class="img-fluid" alt="" style="max-width:100px; max-height: 80px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14 fw-500 text-prime-color">Android Development</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">36</td>
-                <td class="fs-14 border-0 text-center secondary-text">$3,145.23</td>
-                <td class="fs-14 border-0 text-center secondary-text">19/06/2023</td>
-              </tr>
-              <tr>
-                <td class="fs-14 border-0">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="./assets/img/bestsell4.png" class="img-fluid" alt="" style="max-width:100px; max-height: 80px;">
-                    </div>
-                    <div class="px-2">
-                      <span class="fs-14  fw-500 text-prime-color">Advance Design Tools </span>
-                    </div>
-                  </div>
-                </td>
-                <td class="fs-14 border-0 text-center secondary-text">12</td>
-                <td class="fs-14 border-0 text-center secondary-text">$3,145.23</td>
-                <td class="fs-14 border-0 text-center secondary-text">19/06/2023</td>
-              </tr>              
+              {% endfor %}
+                
+                      
               </tbody>
             </table>
             </div>
